@@ -1,3 +1,4 @@
+
 // Learn TypeScript:
 //  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/typescript.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/typescript.html
@@ -16,16 +17,24 @@ export default class NewClass extends cc.Component {
     @property(cc.Label)
     label: cc.Label = null;
 
+    private remainingTime: number = 60; 
     // LIFE-CYCLE CALLBACKS:
 
     // onLoad () {}
 
-    now: Date = new Date();
     start () {
-        this.label.string = '60';
+        // 初期値代入
+        this.label.string = this.remainingTime.toString();
+        // タイマー設定
+        this.schedule(this.countTimer, 1);
     }
 
-    update (dt) {
-        this.label.string = (new Date().getTime() - this.now.getTime()).toString(); 
+    // update (dt) {
+    // }
+
+    // 1秒毎にカウントダウンさせる
+    private countTimer() {
+        this.remainingTime--;
+        this.label.string = (this.remainingTime).toString();
     }
 }

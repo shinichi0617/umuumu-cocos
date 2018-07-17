@@ -10,7 +10,7 @@ export default class Title extends cc.Component {
     start () {
         // init logic
         this.button.node.on('click', (event) => {
-            console.log('CLICK');
+            cc.director.loadScene('Game');
         });
     }
 }
