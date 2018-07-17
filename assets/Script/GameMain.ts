@@ -1,14 +1,3 @@
-
-// Learn TypeScript:
-//  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/typescript.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/typescript.html
-// Learn Attribute:
-//  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/reference/attributes.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
-
 const {ccclass, property} = cc._decorator;
 
 @ccclass
@@ -23,13 +12,20 @@ export default class NewClass extends cc.Component {
     @property(cc.Button)
     windowBtn: cc.Button = null;
 
+    @property(cc.Node)
+    pauseBG: cc.Node = null;
+
     private isPaused: boolean = false;
     private remainingTime: number = 60;
+
     // LIFE-CYCLE CALLBACKS:
 
     // onLoad () {}
 
     start () {
+        // 一時停止用のオブジェクトを非アクティブに
+        this.pauseBG.active = false;
+
         // 一時停止ボタンにイベント設定
         this.pauseBtn.node.on('click', (event) => {
             this.pause();
@@ -43,7 +39,6 @@ export default class NewClass extends cc.Component {
         this.label.string = this.remainingTime.toString();
         // タイマー設定
         this.schedule(this.countTimer, 1);
-        // this.isPaused = false;
     }
 
     // update (dt) {
@@ -59,6 +54,8 @@ export default class NewClass extends cc.Component {
 
     private pause() {
         this.isPaused = !this.isPaused;
+        // 一時停止用のオブジェクトを切り替え
+        this.pauseBG.active = this.isPaused;
     }
 
     private window() {
