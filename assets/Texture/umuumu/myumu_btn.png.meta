@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "71253cbf-96b8-4ea9-8cbe-f2c526d82083",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "myumu_btn": {
+      "ver": "1.0.3",
+      "uuid": "9a6c082f-230e-4838-a865-75afde17b0ab",
+      "rawTextureUuid": "71253cbf-96b8-4ea9-8cbe-f2c526d82083",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -8.5,
+      "offsetY": 0,
+      "trimX": 6,
+      "trimY": 0,
+      "width": 537,
+      "height": 119,
+      "rawWidth": 566,
+      "rawHeight": 119,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
