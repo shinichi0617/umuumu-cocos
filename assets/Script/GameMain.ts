@@ -15,6 +15,12 @@ export default class NewClass extends cc.Component {
     @property(cc.Node)
     pauseBG: cc.Node = null;
 
+    @property(cc.Node)
+    balls: cc.Node = null;
+
+    @property(cc.Prefab)
+    ball: cc.Prefab = null
+
     private isPaused: boolean = false;
     private remainingTime: number = 60;
 
@@ -39,6 +45,8 @@ export default class NewClass extends cc.Component {
         this.label.string = this.remainingTime.toString();
         // タイマー設定
         this.schedule(this.countTimer, 1);
+
+        this.createBalls(50);
     }
 
     // update (dt) {
@@ -60,5 +68,13 @@ export default class NewClass extends cc.Component {
 
     private window() {
 
+    }
+
+    private createBalls(num: number) {
+        for (var i = 0; i < num; i++) {
+            const ball = cc.instantiate(this.ball);
+            ball.setPosition(i*100, i*10);
+            this.balls.addChild(ball);
+        }
     }
 }
