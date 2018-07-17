@@ -29,6 +29,14 @@ export default class NewClass extends cc.Component {
     // onLoad () {}
 
     start () {
+        const physicsManager = cc.director.getPhysicsManager();
+        physicsManager.enabled = true;
+
+        physicsManager.debugDrawFlags = 0;
+        // cc.PhysicsManager.DrawBits.e_aabbBit |
+        // cc.PhysicsManager.DrawBits.e_jointBit |
+        // cc.PhysicsManager.DrawBits.e_shapeBit;
+
         // 一時停止用のオブジェクトを非アクティブに
         this.pauseBG.active = false;
 
@@ -73,7 +81,9 @@ export default class NewClass extends cc.Component {
     private createBalls(num: number) {
         for (var i = 0; i < num; i++) {
             const ball = cc.instantiate(this.ball);
-            ball.setPosition(i*100, i*10);
+            const randX: number = cc.randomMinus1To1() * 300;
+            const randY: number = cc.randomMinus1To1() * 50;
+            ball.setPosition(randX, randY);
             this.balls.addChild(ball);
         }
     }
