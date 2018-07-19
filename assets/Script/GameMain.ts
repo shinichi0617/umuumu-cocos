@@ -29,13 +29,9 @@ export default class NewClass extends cc.Component {
     // onLoad () {}
 
     start () {
-        const physicsManager = cc.director.getPhysicsManager();
-        physicsManager.enabled = true;
-
-        physicsManager.debugDrawFlags = 0;
-        // cc.PhysicsManager.DrawBits.e_aabbBit |
-        // cc.PhysicsManager.DrawBits.e_jointBit |
-        // cc.PhysicsManager.DrawBits.e_shapeBit;
+        cc.director.getPhysicsManager().enabled = true;
+        cc.director.getPhysicsManager().debugDrawFlags = 1;
+        cc.director.getCollisionManager().enabled = true;
 
         // 一時停止用のオブジェクトを非アクティブに
         this.pauseBG.active = false;
