@@ -26,13 +26,8 @@ export default class NewClass extends cc.Component {
 
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad () {}
-
     start () {
-        cc.director.getPhysicsManager().enabled = true;
-        cc.director.getPhysicsManager().debugDrawFlags = 1;
-        cc.director.getCollisionManager().enabled = true;
-
+        
         // 一時停止用のオブジェクトを非アクティブに
         this.pauseBG.active = false;
 
@@ -68,10 +63,19 @@ export default class NewClass extends cc.Component {
         this.isPaused = !this.isPaused;
         // 一時停止用のオブジェクトを切り替え
         this.pauseBG.active = this.isPaused;
+        cc.director.getPhysicsManager().enabled = !this.isPaused;
     }
 
     private window() {
 
+    }
+
+    private addBound (node, x, y, width, height) {
+        const collider = node.addComponent(cc.PhysicsBoxCollider);
+        collider.offset.x = x;
+        collider.offset.y = y;
+        collider.size.width = width;
+        collider.size.height = height;
     }
 
     private createBalls(num: number) {
