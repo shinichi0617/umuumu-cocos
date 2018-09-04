@@ -1,9 +1,10 @@
 {
-  "ver": "1.0.0",
+  "ver": "2.2.0",
   "uuid": "3a36bf39-a4a9-460d-ba61-8a7ff182a079",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
+  "premultiplyAlpha": false,
   "subMetas": {
     "thumb_umu_E4_a": {
       "ver": "1.0.3",
